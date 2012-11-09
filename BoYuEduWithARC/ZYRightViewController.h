@@ -29,7 +29,7 @@
     BOOL _isMaxViewState;
     UIView *_headerView;
     UIWebView *_webView;
-    UIButton *closeButton ;
+//    UIButton *_closeButton ;
 }
 
 //@property (nonatomic, strong) UIView *superView;
@@ -37,8 +37,9 @@
 @property (nonatomic, assign) CGRect putInFrame;
 @property (nonatomic, assign) BOOL isShow;
 @property (nonatomic, strong) UIWebView *webView;
-@property (nonatomic, strong) UIButton *closeButton;
+//@property (nonatomic, strong) UIButton *closeButton;
 
+- (id)initWithTarget:(id)target view:(UIView *)view;
 - (void)addPanGesture;
 - (void)putIn;
 - (void)putOutWithChecking: (BOOL)checking;

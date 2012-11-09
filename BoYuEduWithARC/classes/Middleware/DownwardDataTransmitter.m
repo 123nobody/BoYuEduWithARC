@@ -71,6 +71,7 @@
             return NO;
         }
         if ([[requestString substringToIndex:1] isEqualToString:@"<"]) {
+            NSLog(@"requestString:%@", requestString);
             [Toolkit MidLog:@"[下行传输器]token不合法!" LogType:error];
             return NO;
         }

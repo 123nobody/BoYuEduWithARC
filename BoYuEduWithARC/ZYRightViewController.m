@@ -19,7 +19,7 @@
 @synthesize putInFrame = _putInFrame;
 @synthesize isShow = _isShow;
 @synthesize webView = _webView;
-@synthesize closeButton;
+//@synthesize closeButton;
 
 //@synthesize superView = _superView;
 
@@ -32,13 +32,37 @@
     return self;
 }
 
-- (id)init
+- (id)initWithTarget:(id)target view:(UIView *)view
 {
     self = [super init];
     if (self) {
         _isMaxViewState = NO;
+        self.delegate = target;
+        
+        
+        self.view = view;
+        [self initHeaderView];
+        self.putInFrame = view.frame;
+        [self.view setFrame:CGRectMake(1524, view.frame.origin.y, view.frame.size.width, view.frame.size.height)];
+        [self addPanGesture];
+
     }
     return self;
+}
+
+- (void)initHeaderView
+{
+    _headerView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 60)];
+    _headerView.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"title_br.png"]];
+    
+    UIButton *closeButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    UIImage *closeButtonImage = [UIImage imageNamed:@"button-close2.png"];
+    [closeButton setBackgroundImage:closeButtonImage forState:UIControlStateNormal];
+    [closeButton setFrame:CGRectMake((_headerView.frame.size.width - 50), ((_headerView.frame.size.height - closeButtonImage.size.height - 8) / 2), closeButtonImage.size.width, closeButtonImage.size.height)];
+    [closeButton addTarget:self action:@selector(pressCloseButton:) forControlEvents:UIControlEventTouchUpInside];
+    closeButton.tag = 1;
+    [_headerView addSubview:closeButton];
+    [self.view addSubview:_headerView];
 }
 
 - (void)viewDidLoad
@@ -54,6 +78,7 @@
     headerView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, rightViewFrame.size.width, 60)];
     headerView.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"title_br.png"]];
     
+    UIButton *closeButton;
     closeButton= [UIButton buttonWithType:UIButtonTypeCustom];
     
     UIImage *closeButtonImage;
@@ -75,27 +100,6 @@
         [maxButton addTarget:self action:@selector(pressMaxButton:) forControlEvents:UIControlEventTouchUpInside];
         maxButton.tag = 2;
         [headerView addSubview:maxButton];
-    }
-    
-    switch (index) {
-        case 0:
-            ;
-            break;
-            
-        case 1:
-            ;
-            break;
-            
-        case 2:
-            ;
-            break;
-            
-        case 3:
-            ;
-            break;
-            
-        default:
-            break;
     }
     
     _headerView = headerView;

@@ -77,20 +77,26 @@
         [imageView setFrame:frame];
         [self.backView addSubview:imageView];
         
+        
         //课程介绍
-        _contentLabel = [[UILabel alloc] initWithFrame:CGRectMake(0,0,0,0)];  
+        //CGRectMake(25, (frame.origin.y + frame.size.height + 15), 350, 20)
+        _contentLabel = [[UILabel alloc] init];
         //设置自动行数与字符换行
         [_contentLabel setNumberOfLines:0];  
         _contentLabel.lineBreakMode = UILineBreakModeWordWrap;
+        [_contentLabel setTextColor:[UIColor blackColor]];
         UIFont *font = [UIFont systemFontOfSize:16];
         //设置一个行高上限
-        CGSize size = CGSizeMake(390,500);  
+        CGSize size = CGSizeMake(390,999);  
         //计算实际frame大小，并将label的frame变成实际大小
         CGSize labelsize = [content sizeWithFont:font constrainedToSize:size lineBreakMode:UILineBreakModeWordWrap];  
+        
+        [_contentLabel setFont:font];
         [_contentLabel setFrame:CGRectMake(25, (frame.origin.y + frame.size.height + 10), labelsize.width, labelsize.height)];
+        NSLog(@"_contentLabel.frame = %@", NSStringFromCGRect(_contentLabel.frame));
         _contentLabel.backgroundColor = [UIColor clearColor];
+        
         _contentLabel.text = content;
-//        _contentLabel.text = @"123123123123";
         [self.backView addSubview:_contentLabel];
         
         //课件

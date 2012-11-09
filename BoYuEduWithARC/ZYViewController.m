@@ -11,6 +11,7 @@
 #import "ZYViewController.h"
 #import "RBFilePreviewer.h"
 #import "Model_tLesson.h"
+#import "ClientSyncController.h"
 
 @interface ZYViewController ()
 
@@ -22,6 +23,13 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+//    ClientSyncController *csc = [[ClientSyncController alloc]init];
+//    [csc addTaskWithCondition:@"1;2012-01-01 23:59:59"];
+//    [csc startDownwardTransmitThread];
+//    return;
+    
+    
     
     NSLog(@"load example view, frame: %@", NSStringFromCGRect(self.view.frame));
     
@@ -53,6 +61,10 @@
 
 - (void)initRightViewWithView: (UIView *)view
 {
+    _rightViewController = [[ZYRightViewController alloc]initWithTarget:self view:view];
+    return;
+    
+    /*
     if (_rightViewController) {
 //        [_rightViewController release];
     }
@@ -69,6 +81,7 @@
     
     [self.view addSubview:_rightViewController.view];
 //    [_rightViewController putIn];
+     */
 }
 
 //初始化backView
@@ -163,22 +176,23 @@
 
 - (void)centerTableView:(ZYCenterTableView *)centerTableView didDeselectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    UIView *view = [_rightViewController.view viewWithTag:555];
-    if (!view) {
-        [view removeFromSuperview];
-    }
+//    UIView *view = [_rightViewController.view viewWithTag:555];
+//    if (!view) {
+//        [view removeFromSuperview];
+//    }
+    UIView *view;
     view = [[UIView alloc]init];
-    view.tag = 555;
+//    view.tag = 555;
     
     CGRect rightViewFrame;
-    UIView *headerView;
+//    UIView *headerView;
 //    UITableView *tableView123123;
     int cellTag = [centerTableView cellForRowAtIndexPath:indexPath].tag;
     NSLog(@"selected cell.tag = %d", cellTag);
     
-    if (!_rightViewController) {
-        _rightViewController = [[ZYRightViewController alloc]init];
-    }
+//    if (!_rightViewController) {
+//        _rightViewController = [[ZYRightViewController alloc]init];
+//    }
     
     NSLog(@"ZYView press button section:%d, row:%d", indexPath.section, indexPath.row);
     
@@ -187,12 +201,12 @@
         {
             rightViewFrame = CGRectMake((BY_MENUVIEW_MARGIN_LEFT + BY_MENUCELL_MARGIN_LEFT + BY_MENUCELL_WIDTH - BY_CENTERVIEW_OVER_LENGHT - BY_CENTERVIEW_MOVE_LENGHT + BY_CENTERVIEW_WIDTH - 10), 0, 470, 748);
             
-            headerView = [_rightViewController getHeaderViewWithRightViewFrame:rightViewFrame MenuIndex:_menuView.currentCellIndex];
+//            headerView = [_rightViewController getHeaderViewWithRightViewFrame:rightViewFrame MenuIndex:_menuView.currentCellIndex];
             
 //            tableView = nil;
             
             UIScrollView *lessonScrolView = [[UIScrollView alloc]init];
-            [lessonScrolView setFrame:CGRectMake(0, headerView.frame.size.height, rightViewFrame.size.width, (rightViewFrame.size.height - 20))];
+            [lessonScrolView setFrame:CGRectMake(0, 60, rightViewFrame.size.width, (rightViewFrame.size.height - 20))];
             lessonScrolView.directionalLockEnabled = YES;
             lessonScrolView.backgroundColor = [UIColor whiteColor];
             lessonScrolView.showsVerticalScrollIndicator = YES;
@@ -233,7 +247,7 @@
                 
                 [lessonScrolView addSubview:lessonView];
             }
-            [lessonScrolView setContentSize:CGSizeMake(450, (height + headerView.frame.size.height))];
+            [lessonScrolView setContentSize:CGSizeMake(450, (height + 60))];
 //            [lessonModelArray release];
             
             [view addSubview:lessonScrolView];
@@ -248,8 +262,8 @@
 //            headerView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, rightViewFrame.size.width, 60)];
 //            headerView.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"title_br.png"]];
             
-            headerView = [_rightViewController getHeaderViewWithRightViewFrame:rightViewFrame MenuIndex:_menuView.currentCellIndex];
-            tableView = [[UITableView alloc]initWithFrame:CGRectMake(15, (headerView.frame.size.height + 10), (rightViewFrame.size.width - 15 * 2), (rightViewFrame.size.height - headerView.frame.size.height - 100)) style:UITableViewStylePlain];
+//            headerView = [_rightViewController getHeaderViewWithRightViewFrame:rightViewFrame MenuIndex:_menuView.currentCellIndex];
+            tableView = [[UITableView alloc]initWithFrame:CGRectMake(15, (60 + 10), (rightViewFrame.size.width - 15 * 2), (rightViewFrame.size.height - 60 - 100)) style:UITableViewStylePlain];
 //            tableView.backgroundColor = [UIColor colorWithRed:0.9 green:0.9 blue:0.9 alpha:1];
             tableView.backgroundColor = [UIColor colorWithWhite:0.96 alpha:1.0];
 //            tableView.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"background02.png"]];
@@ -282,7 +296,7 @@
 //            headerView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, rightViewFrame.size.width, 60)];
 //            headerView.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"title_br.png"]];
             
-            headerView = [_rightViewController getHeaderViewWithRightViewFrame:rightViewFrame MenuIndex:_menuView.currentCellIndex];
+//            headerView = [_rightViewController getHeaderViewWithRightViewFrame:rightViewFrame MenuIndex:_menuView.currentCellIndex];
 //            tableView = [[UITableView alloc]initWithFrame:CGRectMake(0, headerView.frame.size.height, rightViewFrame.size.width, (rightViewFrame.size.height - headerView.frame.size.height)) style:UITableViewStylePlain];
         }
             break;
@@ -295,7 +309,7 @@
 //            headerView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, rightViewFrame.size.width, 60)];
 //            headerView.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"title_br.png"]];
             
-            headerView = [_rightViewController getHeaderViewWithRightViewFrame:rightViewFrame MenuIndex:_menuView.currentCellIndex];
+//            headerView = [_rightViewController getHeaderViewWithRightViewFrame:rightViewFrame MenuIndex:_menuView.currentCellIndex];
 //            tableView = [[UITableView alloc]initWithFrame:CGRectMake(0, headerView.frame.size.height, rightViewFrame.size.width, (rightViewFrame.size.height - headerView.frame.size.height)) style:UITableViewStylePlain];
         }
             break;
@@ -310,7 +324,7 @@
     view.layer.cornerRadius = 6;
     view.layer.masksToBounds = YES;
     
-    [view addSubview:headerView];
+//    [view addSubview:headerView];
     
     if (_menuView.currentCellIndex == 1) {
         
@@ -373,7 +387,7 @@
         */
         
     } else if (_menuView.currentCellIndex == 3) {
-        UIWebView *webView = [[UIWebView alloc]initWithFrame:CGRectMake(0, headerView.frame.size.height, rightViewFrame.size.width, (rightViewFrame.size.height - headerView.frame.size.height))];
+        UIWebView *webView = [[UIWebView alloc]initWithFrame:CGRectMake(0, 60, rightViewFrame.size.width, (rightViewFrame.size.height - 60))];
         NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:@"http://www.baidu.com"]];
         [webView loadRequest:request];
         webView.backgroundColor = [UIColor whiteColor];
@@ -389,8 +403,9 @@
     if (_rightViewController) {
         [_rightViewController putOutWithChecking:NO];
     }
-    [self initRightViewWithView:view];
-    
+//    [self initRightViewWithView:view];
+    _rightViewController = [[ZYRightViewController alloc]initWithTarget:self view:view];
+    [self.view addSubview:_rightViewController.view];
     
     [_rightViewController putIn];
 //    NSLog(@"count:%d", [_rightViewController.view subviews].count);

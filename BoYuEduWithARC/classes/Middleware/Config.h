@@ -15,7 +15,8 @@
 #import <Foundation/Foundation.h>
 
 //WebService方法地址
-static const NSString *WEBSERVICE_PATH = @"http://192.168.4.117:8080/MidSynchronous/servlet/ServletEntrance";
+//static const NSString *WEBSERVICE_PATH = @"http://192.168.102.3/MidSynchronous/servlet/ServletEntrance";
+static const NSString *WEBSERVICE_PATH = @"http://192.168.6.191/educate/servlet/ServletEntrance";
 //中间件目录，默认为"/Middleware"
 static const NSString *MIDDLEWARE_DIR = @"/Middleware";
 //任务文件存放目录，默认为"/Tasks"，上级目录为中间件目录
