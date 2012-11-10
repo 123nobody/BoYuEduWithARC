@@ -13,7 +13,7 @@
 - (NSMutableArray *)selectFileNameArrayByLessonId: (NSInteger)lessonId
 {
     NSMutableArray *fileNameArray = [[NSMutableArray alloc]init];
-    ///
+    
 //    [self.db open];
     NSString *sql = [NSString stringWithFormat:@"SELECT attchname  FROM t_attch WHERE lessonid = %d", lessonId];
     //    NSLog(@"sql = %@", sql);
