@@ -15,7 +15,6 @@
 //#import "ZYRightView.h"
 #import "ZYRightViewController.h"
 #import "ZYSettingViewController.h"
-#import "ZYLessonCell.h"
 #import "ZYLessonView.h"
 #import "ZYTestViewController.h"
 

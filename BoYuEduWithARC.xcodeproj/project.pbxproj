@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B671E633164DFBD800ECE54C /* ZYSurveyCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B671E632164DFBD800ECE54C /* ZYSurveyCell.m */; };
 		B68CF94C164CD197006B7B6B /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B68CF94B164CD197006B7B6B /* UIKit.framework */; };
 		B68CF94E164CD197006B7B6B /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B68CF94D164CD197006B7B6B /* Foundation.framework */; };
 		B68CF950164CD197006B7B6B /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B68CF94F164CD197006B7B6B /* CoreGraphics.framework */; };
@@ -135,7 +136,6 @@
 		B68CFAD7164CD1C5006B7B6B /* ZYCenterView.m in Sources */ = {isa = PBXBuildFile; fileRef = B68CFA42164CD1C5006B7B6B /* ZYCenterView.m */; };
 		B68CFAD8164CD1C5006B7B6B /* ZYDataCache.m in Sources */ = {isa = PBXBuildFile; fileRef = B68CFA44164CD1C5006B7B6B /* ZYDataCache.m */; };
 		B68CFAD9164CD1C5006B7B6B /* ZYGridView.m in Sources */ = {isa = PBXBuildFile; fileRef = B68CFA46164CD1C5006B7B6B /* ZYGridView.m */; };
-		B68CFADA164CD1C5006B7B6B /* ZYLessonCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B68CFA48164CD1C5006B7B6B /* ZYLessonCell.m */; };
 		B68CFADB164CD1C5006B7B6B /* ZYLessonView.m in Sources */ = {isa = PBXBuildFile; fileRef = B68CFA4A164CD1C5006B7B6B /* ZYLessonView.m */; };
 		B68CFADC164CD1C5006B7B6B /* ZYMenuView.m in Sources */ = {isa = PBXBuildFile; fileRef = B68CFA4C164CD1C5006B7B6B /* ZYMenuView.m */; };
 		B68CFADD164CD1C5006B7B6B /* ZYRightView.m in Sources */ = {isa = PBXBuildFile; fileRef = B68CFA4E164CD1C5006B7B6B /* ZYRightView.m */; };
@@ -162,6 +162,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		B671E631164DFBD800ECE54C /* ZYSurveyCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZYSurveyCell.h; sourceTree = "<group>"; };
+		B671E632164DFBD800ECE54C /* ZYSurveyCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZYSurveyCell.m; sourceTree = "<group>"; };
 		B68CF947164CD197006B7B6B /* BoYuEduWithARC.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BoYuEduWithARC.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B68CF94B164CD197006B7B6B /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		B68CF94D164CD197006B7B6B /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -370,8 +372,6 @@
 		B68CFA44164CD1C5006B7B6B /* ZYDataCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZYDataCache.m; sourceTree = "<group>"; };
 		B68CFA45164CD1C5006B7B6B /* ZYGridView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZYGridView.h; sourceTree = "<group>"; };
 		B68CFA46164CD1C5006B7B6B /* ZYGridView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZYGridView.m; sourceTree = "<group>"; };
-		B68CFA47164CD1C5006B7B6B /* ZYLessonCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZYLessonCell.h; sourceTree = "<group>"; };
-		B68CFA48164CD1C5006B7B6B /* ZYLessonCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZYLessonCell.m; sourceTree = "<group>"; };
 		B68CFA49164CD1C5006B7B6B /* ZYLessonView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZYLessonView.h; sourceTree = "<group>"; };
 		B68CFA4A164CD1C5006B7B6B /* ZYLessonView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZYLessonView.m; sourceTree = "<group>"; };
 		B68CFA4B164CD1C5006B7B6B /* ZYMenuView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZYMenuView.h; sourceTree = "<group>"; };
@@ -487,10 +487,10 @@
 				B68CFA44164CD1C5006B7B6B /* ZYDataCache.m */,
 				B68CFA45164CD1C5006B7B6B /* ZYGridView.h */,
 				B68CFA46164CD1C5006B7B6B /* ZYGridView.m */,
-				B68CFA47164CD1C5006B7B6B /* ZYLessonCell.h */,
-				B68CFA48164CD1C5006B7B6B /* ZYLessonCell.m */,
 				B68CFA49164CD1C5006B7B6B /* ZYLessonView.h */,
 				B68CFA4A164CD1C5006B7B6B /* ZYLessonView.m */,
+				B671E631164DFBD800ECE54C /* ZYSurveyCell.h */,
+				B671E632164DFBD800ECE54C /* ZYSurveyCell.m */,
 				B68CFA4B164CD1C5006B7B6B /* ZYMenuView.h */,
 				B68CFA4C164CD1C5006B7B6B /* ZYMenuView.m */,
 				B68CFA4D164CD1C5006B7B6B /* ZYRightView.h */,
@@ -1033,7 +1033,6 @@
 				B68CFAD7164CD1C5006B7B6B /* ZYCenterView.m in Sources */,
 				B68CFAD8164CD1C5006B7B6B /* ZYDataCache.m in Sources */,
 				B68CFAD9164CD1C5006B7B6B /* ZYGridView.m in Sources */,
-				B68CFADA164CD1C5006B7B6B /* ZYLessonCell.m in Sources */,
 				B68CFADB164CD1C5006B7B6B /* ZYLessonView.m in Sources */,
 				B68CFADC164CD1C5006B7B6B /* ZYMenuView.m in Sources */,
 				B68CFADD164CD1C5006B7B6B /* ZYRightView.m in Sources */,
@@ -1048,6 +1047,7 @@
 				B68CFB17164CDB9A006B7B6B /* DAO_tTeacher.m in Sources */,
 				B68CFB22164CDDDD006B7B6B /* DAO_tTrain.m in Sources */,
 				B68CFB23164CDDDD006B7B6B /* DAO_tTrainday.m in Sources */,
+				B671E633164DFBD800ECE54C /* ZYSurveyCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

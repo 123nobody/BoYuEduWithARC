@@ -96,6 +96,8 @@
     NSString *documentsDirectory = [Toolkit getDocumentsPathOfApp];
     NSString *targetPath = [documentsDirectory stringByAppendingFormat:@"%@%@", MIDDLEWARE_DIR, filePath];
     [fileManager changeCurrentDirectoryPath:targetPath];
+    
+    NSLog(@"删除的文件filePath = %@/%@", filePath, fileName);
     if (![fileManager fileExistsAtPath:fileName]) {
         [Toolkit MidLog:@"要删除的文件不存在！" LogType:error];
         NSLog(@"filePath = %@/%@", filePath, fileName);

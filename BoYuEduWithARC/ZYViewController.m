@@ -727,241 +727,65 @@
     
     return;
 }
-//////rightView tableView 代理
+////rightView tableView 代理
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     static NSString *CellIdentifier = @"cell";
-    ZYLessonCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     if (cell == nil) {
-        switch (_menuView.currentCellIndex) {
-            case 0:
-            {
-                cell = [[ZYLessonCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier tableView:tableView];
-//                int height = cell.backView.frame.size.height + 14;
-//                CGRect frame =  cell.frame;
-//                frame.size.height = height;
-//                [cell setFrame:frame];
-            }
-                break;
-                
-            case 1:
-            {
-                cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
-            }
-                break;
-                
-            case 2:
-            {
-                cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
-            }
-                break;
-                
-            case 3:
-            {
-                cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
-            }
-                break;
-                
-            default:
-                break;
-        }
-        
-    }
-    UIView *cellView = [cell viewWithTag:1];
-    
-    switch (_menuView.currentCellIndex) {
-        case 0:
-        {
-            
-            cell.teacherNameLabel.text = @"教师名";
-            cell.lessonNameLabel.text = @"金融理财概述和CFP制度123";
-            cell.lessonTimeLabel.text = @"09:00 ~ 10:30";
-            cell.contentLabel.text = @"这里是课程介绍.";
-            NSMutableArray *fileNameArray = [[NSMutableArray alloc]initWithObjects:@"金融理财概述和CFP制度.xls", @"asdasd.xls", @"金融理财概述和CFP制度.xls", @"asdasd.xls", @"金融理财概述和CFP制度.xls", @"asdasd.xls", @"金融理财概述和CFP制度.xls", @"asdasd.xls", nil];
-//            NSMutableArray *fileNameArray = [[NSMutableArray alloc]initWithObjects:@"金融理财概述和CFP制度.xls", nil];
-            [cell addFilesWithFileNameArray:fileNameArray target:self];
-            /*
-            if (cellView != nil) {
-                //按tag取view，改数据。
-                return cell;
-            } else {
-                cellView = [[UIView alloc]initWithFrame:CGRectMake(15, 5, (tableView.frame.size.width - 15 * 2), (250 - 15 - 14))];
-                cellView.backgroundColor = [UIColor colorWithWhite:0.96 alpha:1.0];
-                
-                UIImage *shadowImage = [UIImage imageWithContentsOfFile:[[NSBundle mainBundle]pathForResource:@"background02_br" ofType:@"png"]];
-                UIImageView *shadowImageView = [[UIImageView alloc] initWithImage:shadowImage];
-                UIView *bottomShadowView = [[UIView alloc]initWithFrame:CGRectMake(15, (cellView.frame.origin.y + cellView.frame.size.height), cellView.frame.size.width, shadowImage.size.height)];
-                [shadowImageView setFrame:CGRectMake(0, 0, bottomShadowView.frame.size.width, shadowImage.size.height)];
-                [bottomShadowView addSubview:shadowImageView];
-                [shadowImageView release];
-                
-                UIImage *image;
-                UIImageView *imageView;
-                UILabel *label;
-                CGRect frame;
-                
-                //小人图标
-                image = [UIImage imageNamed:@"head.png"];
-                imageView = [[UIImageView alloc]initWithImage:image];
-                frame = CGRectMake(25, 15, image.size.width, image.size.height);
-                [imageView setFrame:frame];
-                [cellView addSubview:imageView];
-                [imageView release];
-                
-                //分割线
-                image = [UIImage imageNamed:@"background02_line.png"];
-                imageView = [[UIImageView alloc]initWithImage:image];
-                frame = CGRectMake(15, 130, (cellView.frame.size.width - 15 * 2), image.size.height);
-                [imageView setFrame:frame];
-                [cellView addSubview:imageView];
-                [imageView release];
-                
-                //文件背景蓝
-                image = [UIImage imageNamed:@"file_br.png"];
-//                imageView = [[UIImageView alloc]initWithImage:image];
-                frame = CGRectMake(20, 170, image.size.width, image.size.height);
-                UIButton *fileButton = [UIButton buttonWithType:UIButtonTypeCustom];
-                [fileButton setBackgroundImage:image forState:UIControlStateNormal];
-                [fileButton setFrame:frame];
-                [fileButton addTarget:self action:@selector(pressFileButton:) forControlEvents:UIControlEventTouchUpInside];
-//                [imageView setFrame:frame];
-                [cellView addSubview:fileButton];
-//                [imageView release];
-                
-                //姓名
-                frame = CGRectMake(60, 15, 200, image.size.height);
-                label = [[UILabel alloc]initWithFrame:frame];
-                label.text = @"张建国";
-                label.font = [UIFont boldSystemFontOfSize:18];
-                label.textAlignment = UITextAlignmentLeft;
-                label.backgroundColor = [UIColor clearColor];
-                [cellView addSubview:label];
-                [label release];
-                
-                //课程名
-                frame = CGRectMake(25, 50, 350, image.size.height);
-                label = [[UILabel alloc]initWithFrame:frame];
-                label.text = @"金融理财概述和CFP制度";
-                label.textAlignment = UITextAlignmentLeft;
-                label.backgroundColor = [UIColor clearColor];
-                [cellView addSubview:label];
-                [label release];
-                
-                //课程时间
-                frame = CGRectMake(25, 85, 350, image.size.height);
-                label = [[UILabel alloc]initWithFrame:frame];
-                label.text = @"09:15 ~ 10:00";
-                label.textAlignment = UITextAlignmentLeft;
-                label.backgroundColor = [UIColor clearColor];
-                [cellView addSubview:label];
-                [label release];
-                
-                //课程介绍
-                frame = CGRectMake(25, 135, 350, image.size.height);
-                label = [[UILabel alloc]initWithFrame:frame];
-                label.text = @"课程介绍";
-                label.textAlignment = UITextAlignmentLeft;
-                label.backgroundColor = [UIColor clearColor];
-                [cellView addSubview:label];
-                [label release];
-                
-                //课件
-                frame = CGRectMake(60, 168, image.size.width, image.size.height);
-                label = [[UILabel alloc]initWithFrame:frame];
-                label.text = @"金融理财概述和CFP制度.xls";
-                label.textAlignment = UITextAlignmentLeft;
-                label.backgroundColor = [UIColor clearColor];
-                [cellView addSubview:label];
-                [label release];
-                
-                cellView.layer.cornerRadius = 6;
-                cellView.layer.masksToBounds = YES;
-                cellView.tag = 1;
-                [cell addSubview:cellView];
-                [cell addSubview:bottomShadowView];
-                [cellView release];
-                [bottomShadowView release];
-                
-            }*/
-
-        }
-            break;
-        //在线调查
-        case 1:
-        {
-            if (cellView != nil) {
-                //按tag取view，改数据。
-                return cell;
-            } else {
-                UILabel *title = [[UILabel alloc]initWithFrame:CGRectMake(20, 20, 500, 30)];
-                title.backgroundColor = [UIColor clearColor];
-                title.text = @"1. 这里是调查问题这里是调查问题这里是调查问题？";
-                title.font = [UIFont boldSystemFontOfSize:18];
-                [cell addSubview:title];
-                
-                CGRect frame;
-                
-                UIImage *heart = [UIImage imageNamed:@"heart.png"];
-                UIImageView *heartView = [[UIImageView alloc]initWithImage:heart];
-                [heartView setFrame:CGRectMake(15, 60, heart.size.width, heart.size.height)];
-                [cell addSubview:heartView];
-                
-                frame = CGRectMake(40, 50, 600, 40);
-                UILabel *option_A = [[UILabel alloc]init];
-                option_A.backgroundColor = [UIColor clearColor];
-                [option_A setFrame:frame];
-                option_A.text = @"A. 这里是调查选项";
-                option_A.textColor = [UIColor redColor];
-                [cell addSubview:option_A];
-                
-                frame.origin.y += 30;
-                UILabel *option_B = [[UILabel alloc]init];
-                option_B.backgroundColor = [UIColor clearColor];
-                [option_B setFrame:frame];
-                option_B.text = @"B. 这里是调查选项调查选项";
-                [cell addSubview:option_B];
-                
-                frame.origin.y += 30;
-                UILabel *option_C = [[UILabel alloc]init];
-                option_C.backgroundColor = [UIColor clearColor];
-                [option_C setFrame:frame];
-                option_C.text = @"C. 这里是调查选项选项";
-                [cell addSubview:option_C];
-                
-                frame.origin.y += 30;
-                UILabel *option_D = [[UILabel alloc]init];
-                option_D.backgroundColor = [UIColor clearColor];
-                [option_D setFrame:frame];
-                option_D.text = @"D. 这里是调查选项调查选项这里";
-                [cell addSubview:option_D];
-                
-                //分割线
-                UIImage *line = [UIImage imageNamed:@"background02_line.png"];
-                UIImageView *lineView = [[UIImageView alloc]initWithImage:line];
-                frame = CGRectMake(20, (200 - line.size.height), (_rightViewController.view.frame.size.width - 20 * 4), line.size.height);
-                [lineView setFrame:frame];
-                [cell addSubview:lineView];
-            }
-        }
-            break;
-        //在线考试
-        case 2:
-        {
-            ;
-        }
-            break;
-        //金融咨询
-        case 3:
-        {
-            
-        }
-            break;
-            
-        default:
-            break;
+        cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
     }
     
+    if (_menuView.currentCellIndex == 1) {
+        UILabel *title = [[UILabel alloc]initWithFrame:CGRectMake(20, 20, 500, 30)];
+        title.backgroundColor = [UIColor clearColor];
+        title.text = @"1. 这里是调查问题这里是调查问题这里是调查问题？";
+        title.font = [UIFont boldSystemFontOfSize:18];
+        [cell addSubview:title];
         
+        CGRect frame;
+        
+        UIImage *heart = [UIImage imageNamed:@"heart.png"];
+        UIImageView *heartView = [[UIImageView alloc]initWithImage:heart];
+        [heartView setFrame:CGRectMake(15, 60, heart.size.width, heart.size.height)];
+        [cell addSubview:heartView];
+        
+        frame = CGRectMake(40, 50, 600, 40);
+        UILabel *option_A = [[UILabel alloc]init];
+        option_A.backgroundColor = [UIColor clearColor];
+        [option_A setFrame:frame];
+        option_A.text = @"A. 这里是调查选项";
+        option_A.textColor = [UIColor redColor];
+        [cell addSubview:option_A];
+        
+        frame.origin.y += 30;
+        UILabel *option_B = [[UILabel alloc]init];
+        option_B.backgroundColor = [UIColor clearColor];
+        [option_B setFrame:frame];
+        option_B.text = @"B. 这里是调查选项调查选项";
+        [cell addSubview:option_B];
+        
+        frame.origin.y += 30;
+        UILabel *option_C = [[UILabel alloc]init];
+        option_C.backgroundColor = [UIColor clearColor];
+        [option_C setFrame:frame];
+        option_C.text = @"C. 这里是调查选项选项";
+        [cell addSubview:option_C];
+        
+        frame.origin.y += 30;
+        UILabel *option_D = [[UILabel alloc]init];
+        option_D.backgroundColor = [UIColor clearColor];
+        [option_D setFrame:frame];
+        option_D.text = @"D. 这里是调查选项调查选项这里";
+        [cell addSubview:option_D];
+        
+        //分割线
+        UIImage *line = [UIImage imageNamed:@"background02_line.png"];
+        UIImageView *lineView = [[UIImageView alloc]initWithImage:line];
+        frame = CGRectMake(20, (200 - line.size.height), (_rightViewController.view.frame.size.width - 20 * 4), line.size.height);
+        [lineView setFrame:frame];
+        [cell addSubview:lineView];
+    }
     
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     return cell;
