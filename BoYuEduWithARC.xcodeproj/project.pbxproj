@@ -476,6 +476,7 @@
 				B68CF9E1164CD1C5006B7B6B /* images */,
 				B68CFA19164CD1C5006B7B6B /* model */,
 				B68CFA3C164CD1C5006B7B6B /* TaoBao客户端高性能高稳定性应用框架 .pdf */,
+				B68CFA57164CD1C5006B7B6B /* 推荐系统@淘宝 .pdf */,
 				B68CFA3D164CD1C5006B7B6B /* ZYAppView.h */,
 				B68CFA3E164CD1C5006B7B6B /* ZYAppView.m */,
 				B68CFA3F164CD1C5006B7B6B /* ZYCenterTableView.h */,
@@ -502,7 +503,6 @@
 				B68CFA54164CD1C5006B7B6B /* ZYTestViewController.m */,
 				B68CFA55164CD1C5006B7B6B /* ZYViewController.h */,
 				B68CFA56164CD1C5006B7B6B /* ZYViewController.m */,
-				B68CFA57164CD1C5006B7B6B /* 推荐系统@淘宝 .pdf */,
 				B68CF95A164CD197006B7B6B /* ZYAppDelegate.h */,
 				B68CF95B164CD197006B7B6B /* ZYAppDelegate.m */,
 				B68CF952164CD197006B7B6B /* Supporting Files */,
@@ -1155,6 +1155,7 @@
 				B68CF961164CD197006B7B6B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
