@@ -70,50 +70,72 @@
     return name;
 }
 
-- (Model_tLesson *)selectLessonModelByLessonId:(NSInteger)lessonId
-{
-    Model_tLesson *lessonModel = [[Model_tLesson alloc]init];
-    int teacherId;
-    
-    [self.db open];
-    NSString *sql = [NSString stringWithFormat:@"SELECT *  FROM t_lesson WHERE ID = %d", lessonId];
-    //    NSLog(@"sql = %@", sql);
-    FMResultSet *rs = [self.db executeQuery:sql];
-    if (rs.columnCount == 0) {
-        NSLog(@"selectLessonModelByLessonId is nil!");
-    }
-    
-    while ([rs next]) {
-        lessonModel._id = [rs intForColumn:@"ID"];
-        lessonModel.lessonName = [rs stringForColumn:@"lessonName"];
-        lessonModel.lessonTime = [rs stringForColumn:@"lessonTime"];
-        lessonModel.content = [rs stringForColumn:@"content"];
-        
-        teacherId = [rs intForColumn:@"teacherId"];
-        DAO_tTeacher *teacherDAO = [[DAO_tTeacher alloc]init];
-        lessonModel.teacherName = [teacherDAO selectTeacherNameByTeacherId:teacherId];
-        
-        DAO_tAttch *attchDAO = [[DAO_tAttch alloc]init];
-        lessonModel.fileNameArray = [attchDAO selectFileNameArrayByLessonId:lessonModel._id];
-        
-        lessonModel.trainid = [rs intForColumn:@"trainid"];
-        lessonModel.traindayid = [rs intForColumn:@"traindayid"];
-        lessonModel.modifyTime = [rs stringForColumn:@"modifyTime"];
-        lessonModel.isDelete = [rs intForColumn:@"isDelete"];
-        
-    }
-    [rs close];
-    [self.db close];
-    
-    return lessonModel;
-}
+//- (Model_tLesson *)selectLessonModelByLessonId:(NSInteger)lessonId
+//{
+//    Model_tLesson *lessonModel = [[Model_tLesson alloc]init];
+//    int teacherId;
+////    [self.db open];
+//    NSString *sql = [NSString stringWithFormat:@"SELECT *  FROM t_lesson WHERE ID = %d", lessonId];
+//    //    NSLog(@"sql = %@", sql);
+//    FMResultSet *rs = [self.db executeQuery:sql];
+//    if (rs.columnCount == 0) {
+//        NSLog(@"selectLessonModelByLessonId is nil!");
+//    }
+//    
+//    while ([rs next]) {
+//        lessonModel._id = [rs intForColumn:@"ID"];
+//        lessonModel.lessonName = [rs stringForColumn:@"lessonName"];
+//        lessonModel.lessonTime = [rs stringForColumn:@"lessonTime"];
+//        lessonModel.content = [rs stringForColumn:@"content"];
+//        
+//        teacherId = [rs intForColumn:@"teacherId"];
+//        DAO_tTeacher *teacherDAO = [[DAO_tTeacher alloc]init];
+//        lessonModel.teacherName = [teacherDAO selectTeacherNameByTeacherId:teacherId];
+//        
+//        DAO_tAttch *attchDAO = [[DAO_tAttch alloc]init];
+//        lessonModel.fileNameArray = [attchDAO selectFileNameArrayByLessonId:lessonModel._id];
+//        
+//        lessonModel.trainid = [rs intForColumn:@"trainid"];
+//        lessonModel.traindayid = [rs intForColumn:@"traindayid"];
+//        lessonModel.modifyTime = [rs stringForColumn:@"modifyTime"];
+//        lessonModel.isDelete = [rs intForColumn:@"isDelete"];
+//        
+//    }
+//    [rs close];
+////    [self.db close];
+//    
+//    return lessonModel;
+//}
 
+//- (NSMutableArray *)selectLessonModelsByTraindayId:(NSInteger)traindayId
+//{
+//    NSMutableArray *lessonModelsArray = [[NSMutableArray alloc]init];
+//    
+//    [self.db open];
+//    NSString *sql = [NSString stringWithFormat:@"SELECT ID FROM t_lesson WHERE traindayid = %d", traindayId];
+//    //    NSLog(@"sql = %@", sql);
+//    FMResultSet *rs = [self.db executeQuery:sql];
+//    if (rs.columnCount == 0) {
+//        NSLog(@"selectLessonModelsByTraindayId is nil!");
+//    }
+//    Model_tLesson *lessonModel;
+//    while ([rs next]) {
+//        int lessonid = [rs intForColumn:@"ID"];
+//        lessonModel = [self selectLessonModelByLessonId:lessonid];
+//        
+//        [lessonModelsArray addObject:lessonModel];
+//    }
+//    [rs close];
+//    [self.db close];
+//    
+//    return lessonModelsArray;
+//}
 - (NSMutableArray *)selectLessonModelsByTraindayId:(NSInteger)traindayId
 {
     NSMutableArray *lessonModelsArray = [[NSMutableArray alloc]init];
     
     [self.db open];
-    NSString *sql = [NSString stringWithFormat:@"SELECT ID FROM t_lesson WHERE traindayid = %d", traindayId];
+    NSString *sql = [NSString stringWithFormat:@"SELECT l.id, l.lessonName, l.lessonTime, l.content, t.teacherName FROM t_lesson as l JOIN t_teacher as t ON l.teacherid = t.id WHERE traindayid = %d", traindayId];
     //    NSLog(@"sql = %@", sql);
     FMResultSet *rs = [self.db executeQuery:sql];
     if (rs.columnCount == 0) {
@@ -121,8 +143,15 @@
     }
     Model_tLesson *lessonModel;
     while ([rs next]) {
-        int lessonid = [rs intForColumn:@"ID"];
-        lessonModel = [self selectLessonModelByLessonId:lessonid];
+        lessonModel = [[Model_tLesson alloc]init];
+        lessonModel._id = [rs intForColumn:@"ID"];
+        lessonModel.teacherName = [rs stringForColumn:@"teacherName"];
+        lessonModel.lessonName = [rs stringForColumn:@"lessonName"];
+        lessonModel.lessonTime = [rs stringForColumn:@"lessonTime"];
+        lessonModel.content = [rs stringForColumn:@"content"];
+        
+        DAO_tAttch *attchDAO = [[DAO_tAttch alloc]init];
+        lessonModel.fileNameArray = [attchDAO selectFileNameArrayByLessonId:lessonModel._id];
         
         [lessonModelsArray addObject:lessonModel];
     }
@@ -131,5 +160,4 @@
     
     return lessonModelsArray;
 }
-
 @end

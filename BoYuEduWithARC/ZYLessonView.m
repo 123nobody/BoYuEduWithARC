@@ -101,7 +101,7 @@
         
         //课件
         UIButton *fileButton;
-        UILabel *label;
+//        UILabel *label;
         NSString *fileName;
         CGFloat endHeight;
 //        UIView  *filesView;
@@ -156,58 +156,58 @@
     return self;
 }
 
-- (CGRect)addFilesWithFileNameArray: (NSMutableArray *)fileNameArray target:(id)target
-{
-    UIView *filesView = [self viewWithTag:666];
-    if (!filesView) {
-        [filesView removeFromSuperview];
-    }
-    int count = fileNameArray.count;
-    [_backView setFrame:CGRectMake(_backView.frame.origin.x, _backView.frame.origin.y, _backView.frame.size.width, (185 + count * 44))];
-    if (count == 0) {
-        NSLog(@"fileNameArray.count is 0 !!!!");
-        return _backView.frame;
-    }
-    filesView = [[UIView alloc]init];
-    filesView.tag = 666;
-    
-    UIImage *image;
-    CGRect frame = self.contentLabel.frame;
-    UIButton *fileButton;
-    UILabel *label;
-    NSString *fileName;
-    
-    for (int i = 0; i < count; i++) {
-        fileName = [fileNameArray objectAtIndex:i];
-        //文件背景蓝
-        image = [UIImage imageNamed:@"file_br.png"];
-        frame = CGRectMake(20, ((image.size.height + 10) * i), image.size.width, image.size.height);
-        fileButton = [UIButton buttonWithType:UIButtonTypeCustom];
-        [fileButton setBackgroundImage:image forState:UIControlStateNormal];
-        fileButton.accessibilityValue = fileName;
-        [fileButton setFrame:frame];
-        //需要把点击事件抛出去 用代理
-        [fileButton addTarget:target action:@selector(pressFileButton:) forControlEvents:UIControlEventTouchUpInside];
-        [filesView addSubview:fileButton];
-        
-        //课件
-        frame = CGRectMake(60, frame.origin.y, 400, 30);
-        label = [[UILabel alloc]initWithFrame:frame];
-        label.text = fileName;
-        label.textAlignment = UITextAlignmentLeft;
-        label.backgroundColor = [UIColor clearColor];
-        [filesView addSubview:label];
-    }
-    
-    [filesView setFrame:CGRectMake(0, 175, _backView.frame.size.width, ((image.size.height + 10) * count - 10))];
-    [_backView addSubview:filesView];
-    
-    
-    //    self.tag = fileNameArray.count;
-    //    [self.backView setFrame:CGRectMake(self.backView.frame.origin.x, self.backView.frame.origin.y, self.backView.frame.size.width, (self.backView.frame.size.height + fileNameArray.count * 40))];
-    [_bottomShadowView setFrame:CGRectMake(15, (self.backView.frame.origin.y + self.backView.frame.size.height), self.backView.frame.size.width, 14)];
-    return _backView.frame;
-}
+//- (CGRect)addFilesWithFileNameArray: (NSMutableArray *)fileNameArray target:(id)target
+//{
+//    UIView *filesView = [self viewWithTag:666];
+//    if (!filesView) {
+//        [filesView removeFromSuperview];
+//    }
+//    int count = fileNameArray.count;
+//    [_backView setFrame:CGRectMake(_backView.frame.origin.x, _backView.frame.origin.y, _backView.frame.size.width, (185 + count * 44))];
+//    if (count == 0) {
+//        NSLog(@"fileNameArray.count is 0 !!!!");
+//        return _backView.frame;
+//    }
+//    filesView = [[UIView alloc]init];
+//    filesView.tag = 666;
+//    
+//    UIImage *image;
+//    CGRect frame = self.contentLabel.frame;
+//    UIButton *fileButton;
+//    UILabel *label;
+//    NSString *fileName;
+//    
+//    for (int i = 0; i < count; i++) {
+//        fileName = [fileNameArray objectAtIndex:i];
+//        //文件背景蓝
+//        image = [UIImage imageNamed:@"file_br.png"];
+//        frame = CGRectMake(20, ((image.size.height + 10) * i), image.size.width, image.size.height);
+//        fileButton = [UIButton buttonWithType:UIButtonTypeCustom];
+//        [fileButton setBackgroundImage:image forState:UIControlStateNormal];
+//        fileButton.accessibilityValue = fileName;
+//        [fileButton setFrame:frame];
+//        //需要把点击事件抛出去 用代理
+//        [fileButton addTarget:target action:@selector(pressFileButton:) forControlEvents:UIControlEventTouchUpInside];
+//        [filesView addSubview:fileButton];
+//        
+//        //课件
+//        frame = CGRectMake(60, frame.origin.y, 400, 30);
+//        label = [[UILabel alloc]initWithFrame:frame];
+//        label.text = fileName;
+//        label.textAlignment = UITextAlignmentLeft;
+//        label.backgroundColor = [UIColor clearColor];
+//        [filesView addSubview:label];
+//    }
+//    
+//    [filesView setFrame:CGRectMake(0, 175, _backView.frame.size.width, ((image.size.height + 10) * count - 10))];
+//    [_backView addSubview:filesView];
+//    
+//    
+//    //    self.tag = fileNameArray.count;
+//    //    [self.backView setFrame:CGRectMake(self.backView.frame.origin.x, self.backView.frame.origin.y, self.backView.frame.size.width, (self.backView.frame.size.height + fileNameArray.count * 40))];
+//    [_bottomShadowView setFrame:CGRectMake(15, (self.backView.frame.origin.y + self.backView.frame.size.height), self.backView.frame.size.width, 14)];
+//    return _backView.frame;
+//}
 
 
 /*

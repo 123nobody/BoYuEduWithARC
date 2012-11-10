@@ -15,7 +15,7 @@
 
 @implementation ZYRightViewController
 
-@synthesize delegate = _delegate;
+@synthesize rightViewDelegate = _rightViewDelegate;
 @synthesize putInFrame = _putInFrame;
 @synthesize isShow = _isShow;
 @synthesize webView = _webView;
@@ -37,7 +37,7 @@
     self = [super init];
     if (self) {
         _isMaxViewState = NO;
-        self.delegate = target;
+        self.rightViewDelegate = target;
         
         
         self.view = view;
@@ -46,9 +46,22 @@
         [self.view setFrame:CGRectMake(1524, view.frame.origin.y, view.frame.size.width, view.frame.size.height)];
         [self addPanGesture];
 
+//        UIButton *testBtn = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+//        [testBtn setFrame:CGRectMake(200.f, 100.f, 100.f, 50.f)];
+//        [testBtn setTitle:@"test" forState:UIControlStateNormal];
+//        [testBtn addTarget:self action:@selector(test) forControlEvents:UIControlEventTouchUpInside];
+//        [self.view addSubview:testBtn];
+//        
+//        [self.navigationBar setHidden:YES];
     }
     return self;
 }
+
+//-(void)test {
+//    UIViewController *testViewController = [[UIViewController alloc]init];
+//    [testViewController.view setBackgroundColor:[UIColor yellowColor]];
+//    [self pushViewController:testViewController animated:YES];
+//}
 
 - (void)initHeaderView
 {
@@ -187,7 +200,7 @@
     [self.view setFrame:_putInFrame];
     
     [UIView commitAnimations];
-    [_delegate ZYRightViewPutIn];
+    [_rightViewDelegate ZYRightViewPutIn];
     _isShow = YES;
 }
 
@@ -213,7 +226,7 @@
         [self.view setFrame:frame];
         [UIView commitAnimations];
         _isShow = NO;
-        [_delegate ZYRightViewPutOut];
+        [_rightViewDelegate ZYRightViewPutOut];
     }
 }
 

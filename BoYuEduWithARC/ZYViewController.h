@@ -17,6 +17,7 @@
 #import "ZYSettingViewController.h"
 #import "ZYLessonCell.h"
 #import "ZYLessonView.h"
+#import "ZYTestViewController.h"
 
 @interface ZYViewController : UIViewController <UITableViewDataSource, UITableViewDelegate, ZYGridViewDelegate, ZYMenuViewDelegate, ZYCenterViewDelegate, ZYRightViewControllerDelegate, UIScrollViewDelegate, UIImagePickerControllerDelegate,UINavigationControllerDelegate> 
 {

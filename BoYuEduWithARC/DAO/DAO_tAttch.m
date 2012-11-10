@@ -14,7 +14,7 @@
 {
     NSMutableArray *fileNameArray = [[NSMutableArray alloc]init];
     
-    [self.db open];
+//    [self.db open];
     NSString *sql = [NSString stringWithFormat:@"SELECT attchname  FROM t_attch WHERE lessonid = %d", lessonId];
     //    NSLog(@"sql = %@", sql);
     FMResultSet *rs = [self.db executeQuery:sql];
@@ -25,7 +25,7 @@
         [fileNameArray addObject:[rs stringForColumn:@"attchname"]];
     }
     [rs close];
-    [self.db close];
+//    [self.db close];
     
     return fileNameArray;
 }

@@ -21,7 +21,7 @@
 
 @interface ZYRightViewController : UIViewController
 {
-    id<ZYRightViewControllerDelegate> _delegate;
+    id<ZYRightViewControllerDelegate> _rightViewDelegate;
     CGPoint _beginPoint;
     CGRect _putInFrame;
     BOOL _isShow;//为了防止动画出现问题，所以不用isHidden。
@@ -33,7 +33,7 @@
 }
 
 //@property (nonatomic, strong) UIView *superView;
-@property (nonatomic, strong) id<ZYRightViewControllerDelegate> delegate;
+@property (nonatomic, strong) id<ZYRightViewControllerDelegate> rightViewDelegate;
 @property (nonatomic, assign) CGRect putInFrame;
 @property (nonatomic, assign) BOOL isShow;
 @property (nonatomic, strong) UIWebView *webView;

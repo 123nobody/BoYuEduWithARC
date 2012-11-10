@@ -247,6 +247,11 @@
                 
                 [lessonScrolView addSubview:lessonView];
             }
+            
+//            UIButton *b = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+//            [b setFrame:CGRectMake(50, 50, 200, 50)];
+//            [lessonScrolView addSubview:b];
+            
             [lessonScrolView setContentSize:CGSizeMake(450, (height + 60))];
 //            [lessonModelArray release];
             
@@ -293,6 +298,18 @@
         {
 //            label.text = [NSString stringWithFormat:@"菜单3 group：%d row:%d", indexPath.section, indexPath.row];
             rightViewFrame = CGRectMake((BY_MENUVIEW_MARGIN_LEFT + BY_MENUCELL_MARGIN_LEFT + BY_MENUCELL_WIDTH - BY_CENTERVIEW_OVER_LENGHT - BY_CENTERVIEW_MOVE_LENGHT + BY_CENTERVIEW_WIDTH - 10), 0, 470, 748);
+            
+            
+            
+//            UIViewController *testViewController = [[UIViewController alloc]initWithNibName:nil bundle:nil];
+//            [testViewController.view setFrame:CGRectMake(20, 70, 100, 100)];
+//            [testViewController.view setBackgroundColor:[UIColor greenColor]];
+            
+            UIView *tttt = [[UIView alloc]initWithFrame:CGRectMake(20, 70, 100, 100)];
+            [tttt setBackgroundColor:[UIColor greenColor]];
+            [view addSubview:tttt];
+            
+            
 //            headerView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, rightViewFrame.size.width, 60)];
 //            headerView.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"title_br.png"]];
             

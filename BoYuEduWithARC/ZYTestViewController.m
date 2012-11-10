@@ -23,6 +23,19 @@
     return self;
 }
 
+- (id)init
+{
+    self = [super init];
+    if (self) {
+//        [self.view setFrame:CGRectMake(20, 70, 100, 100)];
+        self.view.backgroundColor = [UIColor blueColor];
+        UIButton *commit = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+        [commit setFrame:CGRectMake(50, 50, 200, 50)];
+        [self.view addSubview:commit];
+    }
+    return self;
+}
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
